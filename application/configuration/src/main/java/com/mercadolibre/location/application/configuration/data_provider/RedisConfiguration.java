@@ -5,7 +5,7 @@
  ******************************************/
 package com.mercadolibre.location.application.configuration.data_provider;
 
-import com.mercadolibre.location.application.data_provider.model.CountryInformationModel;
+import com.mercadolibre.location.application.data_provider.model.redis.CountryInformationModel;
 import com.mercadolibre.location.application.data_provider.repository.CountryInformationRedisRepository;
 
 import org.slf4j.Logger;
