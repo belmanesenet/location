@@ -3,7 +3,9 @@
  * https://www.mercadolibre.com.co/        *
  * 29/11/21 - 03:09 PM                     *
  ******************************************/
-package com.mercadolibre.location.application.entry_point;
+package com.mercadolibre.location.application.entry_point.service;
+
+import com.mercadolibre.location.application.entry_point.controller.vo.CountryTrackingVo;
 
 /**
  * Definition of service request trace in presenter layer
@@ -11,7 +13,7 @@ package com.mercadolibre.location.application.entry_point;
  * @author: <a href="mailto:belmanese@gmail.com"> belman </a>
  * @version: 1.0.0
  */
-public interface RequestTrackingPresenter {
+public interface RequestTrackingService {
 
     /**
      * Tracking information about the country where the request is made
@@ -19,6 +21,6 @@ public interface RequestTrackingPresenter {
      * @param ip Where the request starts
      * @return Tracking information
      */
-//    TraceResponseVo trace(final String ip);/
+    CountryTrackingVo trace(final String ip);
 
 }

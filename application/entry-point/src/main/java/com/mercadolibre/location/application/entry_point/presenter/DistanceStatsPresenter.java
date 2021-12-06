@@ -3,7 +3,7 @@
  * https://www.mercadolibre.com.co/        *
  * 29/11/21 - 03:02 PM                     *
  ******************************************/
-package com.mercadolibre.location.application.entry_point;
+package com.mercadolibre.location.application.entry_point.presenter;
 
 import com.mercadolibre.location.application.entry_point.controller.vo.CountryStatsVo;
 

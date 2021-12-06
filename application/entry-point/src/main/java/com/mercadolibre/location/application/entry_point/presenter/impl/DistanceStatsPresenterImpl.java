@@ -3,10 +3,10 @@
  * https://www.mercadolibre.com.co/        *
  * 29/11/21 - 03:02 PM                     *
  ******************************************/
-package com.mercadolibre.location.application.entry_point.impl;
+package com.mercadolibre.location.application.entry_point.presenter.impl;
 
 import com.mercadolibre.location.application.core.use_case.DistanceStatsUseCase;
-import com.mercadolibre.location.application.entry_point.DistanceStatsPresenter;
+import com.mercadolibre.location.application.entry_point.presenter.DistanceStatsPresenter;
 import com.mercadolibre.location.application.entry_point.controller.vo.CountryStatsVo;
 
 import org.modelmapper.ModelMapper;

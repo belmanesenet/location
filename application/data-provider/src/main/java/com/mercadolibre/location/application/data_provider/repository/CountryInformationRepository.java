@@ -5,7 +5,7 @@
  ******************************************/
 package com.mercadolibre.location.application.data_provider.repository;
 
-import com.mercadolibre.location.application.data_provider.model.CountryInformationModel;
+import com.mercadolibre.location.application.data_provider.model.redis.CountryInformationModel;
 
 import java.util.Map;
 

@@ -6,7 +6,10 @@
 package com.mercadolibre.location.application.entry_point.controller;
 
 import com.mercadolibre.location.application.entry_point.controller.vo.CountryStatsVo;
+import com.mercadolibre.location.application.entry_point.controller.vo.CountryTrackingVo;
+import com.mercadolibre.location.application.entry_point.controller.vo.IpVo;
 import com.mercadolibre.location.application.entry_point.service.DistanceStatsService;
+import com.mercadolibre.location.application.entry_point.service.RequestTrackingService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,17 +30,22 @@ public class LocationController {
     /** Log information **/
     private static final Logger LOGGER = LoggerFactory.getLogger(LocationController.class);
 
-    /** Service with logic about finding information on LocationDto of countries **/
+    /** Service with logic about calculate stats of requests **/
     private final DistanceStatsService statsService;
+
+    /** Service with logic about finding information on Location of countries **/
+    private final RequestTrackingService trackingService;
 
     /**
      * Main LocationDto controller constructor
      *
      * @param statsService Get stats about country, distance and invocations
+     * @param trackingService information on Location of countries
      */
-    public LocationController(final DistanceStatsService statsService) {
+    public LocationController(final DistanceStatsService statsService, final RequestTrackingService trackingService) {
 
         this.statsService = statsService;
+        this.trackingService = trackingService;
     }
 
     /**
@@ -60,11 +68,11 @@ public class LocationController {
      * @param ipVo Where the request starts
      * @return Tracking information
      */
-//    @PostMapping("/trace")
-//    public ResponseEntity<TraceResponseVo> trace(@RequestBody final IpVo ipVo) throws IOException {
-//
-//        LOGGER.info("initialize request tracking process in controller");
-//        return ResponseEntity.status(HttpStatus.OK).body(service.trace(ipVo.getIp()));
-//    }
+    @PostMapping("/trace")
+    public ResponseEntity<CountryTrackingVo> trace(@RequestBody final IpVo ipVo) {
+
+        LOGGER.info("initialize request tracking process in controller");
+        return ResponseEntity.status(HttpStatus.OK).body(trackingService.trace(ipVo.getIp()));
+    }
 
 }

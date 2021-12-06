@@ -1,7 +1,7 @@
 package com.mercadolibre.location.application.entry_point.service.impl;
 
 import com.mercadolibre.location.application.entry_point.controller.vo.CountryStatsVo;
-import com.mercadolibre.location.application.entry_point.DistanceStatsPresenter;
+import com.mercadolibre.location.application.entry_point.presenter.DistanceStatsPresenter;
 import com.mercadolibre.location.application.entry_point.service.DistanceStatsService;
 
 import org.springframework.stereotype.Service;

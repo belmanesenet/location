@@ -3,7 +3,7 @@
  * https://www.mercadolibre.com.co/        *
  * 29/11/21 - 03:02 PM                     *
  ******************************************/
-package com.mercadolibre.location.application.data_provider.model;
+package com.mercadolibre.location.application.data_provider.model.redis;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

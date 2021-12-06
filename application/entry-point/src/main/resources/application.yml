@@ -1,0 +1,5 @@
+retrofit:
+  trace-url: 'http://api.ipapi.com/'
+  trace-key: 'e394d38a046a334ad418054c57d0e115'
+  currency-url: 'https://api.cambio.today'
+  currency-key: '13840|y~a8Nmq3rpQmnSvbe^kMUH4XwmoZ3Wtw'
