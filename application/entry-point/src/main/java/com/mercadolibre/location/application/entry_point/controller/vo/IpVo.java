@@ -5,7 +5,9 @@
  ******************************************/
 package com.mercadolibre.location.application.entry_point.controller.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -18,6 +20,8 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class IpVo implements Serializable {
 
     /** IP of the country where the request starts **/
