@@ -41,10 +41,10 @@ public class DistanceStatsUseCaseImpl implements DistanceStatsUseCase {
     @Override
     public CountryStatsEntity getSummary() {
 
-        Map<String, CountryInformationEntity> countryInformations = provider.getSummary();
+        Map<String, CountryInformationEntity> countryInformation = provider.getSummary();
 
-        if(countryInformations.size() > 0) {
-            Map.Entry<String, CountryInformationEntity> firstCountry = countryInformations.entrySet().iterator().next();
+        if(countryInformation.size() > 0) {
+            Map.Entry<String, CountryInformationEntity> firstCountry = countryInformation.entrySet().iterator().next();
 
             double farthestDistance = Double.parseDouble(firstCountry.getValue().getDistance());
             double closestDistance = farthestDistance;
@@ -52,7 +52,7 @@ public class DistanceStatsUseCaseImpl implements DistanceStatsUseCase {
             double sumOfInvocations = 0D;
 
 
-            for (Map.Entry<String, CountryInformationEntity> country : countryInformations.entrySet()) {
+            for (Map.Entry<String, CountryInformationEntity> country : countryInformation.entrySet()) {
                 double distance = Double.parseDouble(country.getValue().getDistance());
                 double invocation = Double.parseDouble(country.getValue().getInvocations());
                 farthestDistance = Math.max(distance, farthestDistance);
