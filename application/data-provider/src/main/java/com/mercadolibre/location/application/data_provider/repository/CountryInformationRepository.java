@@ -3,9 +3,9 @@
  * https://www.mercadolibre.com.co/        *
  * 29/11/21 - 03:02 PM                     *
  ******************************************/
-package com.mercadolibre.location.application.entry_point.repository;
+package com.mercadolibre.location.application.data_provider.repository;
 
-import com.mercadolibre.location.application.entry_point.controller.dto.CountryInvocationDto;
+import com.mercadolibre.location.application.data_provider.model.CountryInformationModel;
 
 import java.util.Map;
 
@@ -15,16 +15,16 @@ import java.util.Map;
  * @author: <a href="mailto:belmanese@gmail.com"> belman </a>
  * @version: 1.0.0
  */
-public interface CountryInvocationRepository {
+public interface CountryInformationRepository {
 
     /** Find all country invocations **/
-    Map<String, CountryInvocationDto> findAll();
+    Map<String, CountryInformationModel> findAll();
 
     /** Find country invocations by countryName **/
-    CountryInvocationDto findByCountryName(final String countryName);
+    CountryInformationModel findByCountryName(final String countryName);
 
     /** Save a country invocation **/
-    void save(final CountryInvocationDto countryInvocation);
+    void save(final CountryInformationModel countryInvocation);
 
     /** Remove a country invocation by countryName **/
     void delete(final String countryName);

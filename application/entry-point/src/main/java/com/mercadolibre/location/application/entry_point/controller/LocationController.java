@@ -5,17 +5,14 @@
  ******************************************/
 package com.mercadolibre.location.application.entry_point.controller;
 
-import com.mercadolibre.location.application.entry_point.controller.vo.IpVo;
-import com.mercadolibre.location.application.entry_point.controller.vo.StatsResponseVo;
-import com.mercadolibre.location.application.entry_point.controller.vo.TraceResponseVo;
-import com.mercadolibre.location.application.entry_point.service.LocationService;
+import com.mercadolibre.location.application.entry_point.controller.vo.CountryStatsVo;
+import com.mercadolibre.location.application.entry_point.service.DistanceStatsService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 
 /**
  * Main controller, get country LocationDto information
@@ -31,16 +28,16 @@ public class LocationController {
     private static final Logger LOGGER = LoggerFactory.getLogger(LocationController.class);
 
     /** Service with logic about finding information on LocationDto of countries **/
-    private final LocationService service;
+    private final DistanceStatsService statsService;
 
     /**
      * Main LocationDto controller constructor
      *
-     * @param service Starts the process of tracking and obtaining statistical information
+     * @param statsService Get stats about country, distance and invocations
      */
-    public LocationController(final LocationService service) {
+    public LocationController(final DistanceStatsService statsService) {
 
-        this.service = service;
+        this.statsService = statsService;
     }
 
     /**
@@ -50,10 +47,10 @@ public class LocationController {
      * @return Statistical information on requests to the service
      */
     @GetMapping("/stats")
-    public ResponseEntity<StatsResponseVo> stats() {
+    public ResponseEntity<CountryStatsVo> stats() {
 
         LOGGER.info("initializes the statistics calculation process in controller");
-        return ResponseEntity.status(HttpStatus.OK).body(service.stats());
+        return ResponseEntity.status(HttpStatus.OK).body(statsService.getSummary());
     }
 
     /**
@@ -63,11 +60,11 @@ public class LocationController {
      * @param ipVo Where the request starts
      * @return Tracking information
      */
-    @PostMapping("/trace")
-    public ResponseEntity<TraceResponseVo> trace(@RequestBody final IpVo ipVo) throws IOException {
-
-        LOGGER.info("initialize request tracking process in controller");
-        return ResponseEntity.status(HttpStatus.OK).body(service.trace(ipVo.getIp()));
-    }
+//    @PostMapping("/trace")
+//    public ResponseEntity<TraceResponseVo> trace(@RequestBody final IpVo ipVo) throws IOException {
+//
+//        LOGGER.info("initialize request tracking process in controller");
+//        return ResponseEntity.status(HttpStatus.OK).body(service.trace(ipVo.getIp()));
+//    }
 
 }

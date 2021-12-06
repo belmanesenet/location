@@ -3,14 +3,14 @@
  * https://www.mercadolibre.com.co/        *
  * 29/11/21 - 03:02 PM                     *
  ******************************************/
-package com.mercadolibre.location.application.entry_point.repository;
+package com.mercadolibre.location.application.data_provider.repository;
 
-import com.mercadolibre.location.application.entry_point.controller.dto.CountryInvocationDto;
+import com.mercadolibre.location.application.data_provider.model.CountryInformationModel;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.Map;
@@ -21,22 +21,26 @@ import java.util.Map;
  * @author: <a href="mailto:belmanese@gmail.com"> belman </a>
  * @version: 1.0.0
  */
-@Repository
-public class CountryInvocationRedisRepository implements CountryInvocationRepository {
+public class CountryInformationRedisRepository implements CountryInformationRepository {
 
     /** Log information **/
-    private static final Logger LOGGER = LoggerFactory.getLogger(CountryInvocationRedisRepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CountryInformationRedisRepository.class);
 
     /** Caching redis key **/
     private static final String KEY = "invocations";
 
     /** Caching redis template **/
-    private final  RedisTemplate<String, CountryInvocationDto> redisTemplate;
+    private final  RedisTemplate<String, CountryInformationModel> redisTemplate;
 
     /** Isolate operations **/
     private HashOperations hashOperations;
 
-    public CountryInvocationRedisRepository(final RedisTemplate<String, CountryInvocationDto> redisTemplate) {
+    /**
+     * CountryInformationRedisRepository constructor
+     *
+     * @param redisTemplate For query summary of requests
+     */
+    public CountryInformationRedisRepository(final RedisTemplate<String, CountryInformationModel> redisTemplate) {
 
         this.redisTemplate = redisTemplate;
     }
@@ -56,7 +60,7 @@ public class CountryInvocationRedisRepository implements CountryInvocationReposi
      * @return Map with key/values country invocations cached
      */
     @Override
-    public Map<String, CountryInvocationDto> findAll() {
+    public Map<String, CountryInformationModel> findAll() {
 
         LOGGER.info("Find all invocations to the service");
         return hashOperations.entries(KEY);
@@ -69,22 +73,22 @@ public class CountryInvocationRedisRepository implements CountryInvocationReposi
      * @return Country invocations founds
      */
     @Override
-    public CountryInvocationDto findByCountryName(final String countryName) {
+    public CountryInformationModel findByCountryName(final String countryName) {
 
         LOGGER.info("Find invocations to the service by countryName {}", countryName);
-        return (CountryInvocationDto) hashOperations.get(KEY, countryName);
+        return (CountryInformationModel) hashOperations.get(KEY, countryName);
     }
 
     /**
      * Caches a country invocation
      *
-     * @param countryInvocation for save
+     * @param countryInformation for save
      */
     @Override
-    public void save(final CountryInvocationDto countryInvocation) {
+    public void save(final CountryInformationModel countryInformation) {
 
         LOGGER.info("Update a country invocation to the service");
-        hashOperations.put(KEY, countryInvocation.getCountry(), countryInvocation);
+        hashOperations.put(KEY, countryInformation.getCountry(), countryInformation);
     }
 
     /**

@@ -23,7 +23,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StatsResponseVo implements Serializable {
+public class CountryStatsVo implements Serializable {
 
     /** Farthest distance to Buenos Aires **/
     @JsonProperty("farthest_distance")

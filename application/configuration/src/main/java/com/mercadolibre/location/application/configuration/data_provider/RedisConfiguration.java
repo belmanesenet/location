@@ -5,12 +5,13 @@
  ******************************************/
 package com.mercadolibre.location.application.configuration.data_provider;
 
-import com.mercadolibre.location.application.entry_point.controller.dto.CountryInvocationDto;
+import com.mercadolibre.location.application.data_provider.model.CountryInformationModel;
+import com.mercadolibre.location.application.data_provider.repository.CountryInformationRedisRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -43,14 +44,43 @@ public class RedisConfiguration {
      *
      * @return a template with key and value pairs
      */
+//    @Bean
+//    RedisTemplate<String, CountryInvocationDto> redisTemplate() {
+//
+//        LOGGER.info("Configure a redis template");
+//        final RedisTemplate<String, CountryInvocationDto> redisTemplate = new RedisTemplate<>();
+//        redisTemplate.setConnectionFactory(jedisConnectionFactory());
+//
+//        return redisTemplate;
+//    }
+
+    /**
+     * Configure key/value pairs template
+     *
+     * @return a template with key and value pairs
+     */
     @Bean
-    RedisTemplate<String, CountryInvocationDto> redisTemplate() {
+    RedisTemplate<String, CountryInformationModel> redisTemplateModel() {
 
         LOGGER.info("Configure a redis template");
-        final RedisTemplate<String, CountryInvocationDto> redisTemplate = new RedisTemplate<>();
+        final RedisTemplate<String, CountryInformationModel> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnectionFactory());
+
         return redisTemplate;
     }
+
+    /**
+     * Build a valid {@link CountryInformationRedisRepository} bean
+     *
+     * @return a {@link CountryInformationRedisRepository} built with its providers
+     */
+    @Bean
+    public CountryInformationRedisRepository buildCountryInformationRedisRepository() {
+
+        return new CountryInformationRedisRepository(redisTemplateModel());
+    }
+
+
 
 
 /** Heroku **/
