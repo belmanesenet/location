@@ -1,7 +1,7 @@
 /*******************************************
- * PayU Latam - Copyright (c) 2013 - 2017  *
- * http://www.payulatam.com                *
- * 12/5/19 - 4:20 PM                       *
+ * Mercadolibre - Copyright (c) ...        *
+ * https://www.mercadolibre.com.co/        *
+ * 29/11/21 - 03:02 PM                     *
  ******************************************/
 package com.mercadolibre.location.integration_test;
 
@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.mercadolibre.location.application.entry_point.controller.LocationController;
 import com.mercadolibre.location.application.entry_point.controller.vo.IpVo;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

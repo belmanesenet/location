@@ -1,7 +1,7 @@
 /*******************************************
- * PayU Latam - Copyright (c) 2013 - 2017  *
- * http://www.payulatam.com                *
- * 12/5/19 - 4:20 PM                       *
+ * Mercadolibre - Copyright (c) ...        *
+ * https://www.mercadolibre.com.co/        *
+ * 29/11/21 - 03:02 PM                     *
  ******************************************/
 package com.mercadolibre.location.application.data_provider.configuration;
 
@@ -11,7 +11,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.stereotype.Component;
 
 /**
- * Read page properties used for get cancellation request and cancellation summaries
+ * Models a YML property file
  *
  * @author: <a href="mailto:belman.santos@payulatam.com"> belman </a>
  * @version: 1.1.0
